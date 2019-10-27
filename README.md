@@ -46,9 +46,9 @@ How IPFC?
 Please stay tuned for more updates and detailed explanations for users and developers.
 
 For now, to use the app:
-1)	Download the whole github repository, 
+1)	Download the whole github repository 
 
-2)	Install the python libraries: pip install -r /path/to/requirements.txtinstall 
+2)	Install the python libraries: pip install -r your/path/to/requirements.txt
 
 3)	Run the IPFC_main.py file
 
