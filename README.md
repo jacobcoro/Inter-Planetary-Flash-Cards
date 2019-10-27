@@ -53,7 +53,9 @@ For now, to use the app:
 3)	Run the IPFC_main.py file
 
 To get started with some flashcard decks, feel free to use the testing account:
+
 Username: 123@123.123
+
 Password: Password123
 
 Because there are many images in the test decks, the initial sync might take some time.
