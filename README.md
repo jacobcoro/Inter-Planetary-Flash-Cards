@@ -1,9 +1,11 @@
 # Inter-Planetary-Flash-Cards
 Universal flashcard converter, decentralized flashcard cloud storage, and flashcard app
 
+
 What is IPFC?
 
 The goal is for IPFC to be:
+
 •	A universal flashcard format converter, 
 
 •	A decentralized flashcard cloud storage for flashcards, and finally 
@@ -11,11 +13,13 @@ The goal is for IPFC to be:
 •	Flashcard and EdTech app ecosystem
 
 Currently IPFS is:
+
 •	A very minimal flashcard app for desktop computers.
 
 •	A converter for Quizlet flashcard decks exports, solving some of the inconsistencies in export format, especially dealing with images and line breaks.
 
 •	A cloud storage solution for the cards using the Inter Planetary File System.
+
 
 Why IPFC?
 
@@ -35,6 +39,7 @@ Developers and serious users of flashcard apps, especially those who use long te
 >	Users might fear that the company goes bankrupt, suffers an attack, or changes the user agreement, holding the user’s data hostage. IPFC solves this issue by letting users host their own data on the IPFS. Although the current implementation of IPFC requires a private database for storing user information and passwords, even in its current state, if the IPFC database goes offline, users can immediately access all of their data as it has been constantly backed up on the IPFS. This allows users to feel comfortable using a new service they can get out of any time. 
 
 >	If a developer wants to create an app, for example a flash card game, and they’d like to try connecting it to a flashcard review or creation app, they would have to ask that app for permission first or require users to go through an inconvenient import/export. In the IPFC ecosystem, they could add a new app that instantly works with all the others without asking for permission. They also don’t have to worry that one day IPFC will start charging them for access or suddenly disappear. Until a purely decentralized model is created, the IPFC centralized database will regularly upload the semi anonymous user IDs, and user collection data of the whole project to the IPFS at a publically shared location. This means another development team could instantly fork the project and run the centralized server with no interruptions to users as long as users recorded their ID.
+
 
 How IPFC?
 
