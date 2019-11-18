@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+###
+ - You'll probably want this: https://github.com/vuejs/vue-devtools
+ - Based https://www.thepolyglotdeveloper.com/2018/04/simple-user-login-vuejs-web-application/
