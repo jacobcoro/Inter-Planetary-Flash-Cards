@@ -1,28 +1,31 @@
-import sys
-import os
-from pathlib import Path
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import json
+import os
 import random
-from PyQt5.QtWidgets import QDialog, QApplication
-from PyQt5.QtGui import QDesktopServices
-from PyQt5.QtCore import QUrl
-import uuid
-import argon2
-import requests
 import secrets
 import shutil
+import sys
 import time
+import uuid
+from pathlib import Path
+
+import argon2
+import requests
+from PyQt5.QtCore import QUrl
+from PyQt5.QtGui import QDesktopServices
+from PyQt5.QtWidgets import QDialog, QApplication
 
 # Import the UI files, made with QtDesigner
-from IPFC_Start_menu import *
 from IPFC_Deck_menu import *
-from IPFC_Quiz_choose import *
-from IPFC_Multi_choice import *
-from IPFC_Login import *
-from IPFC_Signup import *
 from IPFC_Import import *
 from IPFC_Import_options import *
-
+from IPFC_Login import *
+from IPFC_Multi_choice import *
+from IPFC_Quiz_choose import *
+from IPFC_Signup import *
+from IPFC_Start_menu import *
 
 program_directory = Path.cwd()
 api_url = "https://ipfc-midware.herokuapp.com/"
@@ -938,8 +941,8 @@ class MultiChoice(QDialog):
 
     def game_over(self):
         self.ui.pushButtonNext.clicked.connect(self.quit)
-        self.ui.QlabelCorrect.setText(f"Your score was {str(round(100 * self.score / self.top_score, 2))}%. "
-                                      f"You got {str(self.score)} / {str(self.top_score)} cards correct.")
+        #self.ui.QlabelCorrect.setText(f"Your score was {str(round(100 * self.score / self.top_score, 2))}%. " /
+        #                              f"You got {str(self.score)} / {str(self.top_score)} cards correct.")
 
     def quit(self):
         self.dialog = DeckMenu(self.deck_name)
