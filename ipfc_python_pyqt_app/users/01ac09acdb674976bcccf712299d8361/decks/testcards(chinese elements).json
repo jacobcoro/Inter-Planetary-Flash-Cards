@@ -1,0 +1,41 @@
+{
+    "cards": [
+        {
+            "back_text": " \"\\u6c14 qi4\",",
+            "card_id": "845e79e598434c0eacb996e538b433d2",
+            "card_tags": [],
+            "front_text": "    \"air\""
+        },
+        {
+            "back_text": " \"\\u571f tu3\",",
+            "card_id": "c3b11c55594f4bd28aeba08dd134c9e9",
+            "card_tags": [],
+            "front_text": "    \"earth\""
+        },
+        {
+            "back_text": " \"\\u706b huo3\",",
+            "card_id": "43612c7e8001435fbe6a0eff42131cc0",
+            "card_tags": [],
+            "front_text": "    \"fire\""
+        },
+        {
+            "back_text": " \"\\u6c34 shui3\"\n}\n{",
+            "card_id": "bbe7c4b52aa746c0b021613223cba05c",
+            "card_tags": [],
+            "front_text": "    \"water\""
+        }
+    ],
+    "created_by": "01ac09acdb674976bcccf712299d8361",
+    "deck_id": "7889aff458a14cdf9c9eee807c05cca6",
+    "deck_tags": [],
+    "description": null,
+    "editable_by": "only_me",
+    "edited": 1355563273,
+    "has_html": false,
+    "has_media": false,
+    "lang_back": "en",
+    "lang_front": "en",
+    "term_count": 4,
+    "title": "testcards(chinese elements)",
+    "visibility": "public"
+}

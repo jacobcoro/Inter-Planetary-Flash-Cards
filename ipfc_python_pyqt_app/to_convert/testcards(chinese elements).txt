@@ -1,0 +1,6 @@
+{
+    "air": "\u6c14 qi4",
+    "earth": "\u571f tu3",
+    "fire": "\u706b huo3",
+    "water": "\u6c34 shui3"
+}
