@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "preserveConstEnums": true,
+        "target": "ES5",
+        "module": "commonjs",
+        "pretty": true
+    },
+    "files": [
+        "toasts.ts"
+    ]
+}
