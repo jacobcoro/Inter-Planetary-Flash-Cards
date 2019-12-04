@@ -1,0 +1,29 @@
+body{
+	font-family: 'Economica', sans-serif;
+	color:black;
+}
+
+.minor{
+	color:#DFDFDF;
+}
+
+button{
+	border:none;
+	padding:8px;
+	border-radius:4px;
+	background-color: #CCCCCC;
+	font-family:inherit;
+	font-size: 20px;
+	cursor:pointer;
+}
+button:hover{
+	background-color: #B0B0B0;
+}
+
+a {
+	color: #79BABA;
+}
+h1 > a {
+	font-size: 20px;
+	margin-left: 10px;
+}
