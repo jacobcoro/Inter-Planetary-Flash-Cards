@@ -1,6 +1,0 @@
-{
-    "Front of card 1": "Back of card 1",
-    "Front of card 2": "Back of card 2",
-    "Front of card 3": "Back of card 3",
-    "Front of card 4": "Back of card 4"
-}
