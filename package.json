@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "node build/dev-server.js",
+    "start": "node server.js",
+    "build": "node build/build.js",
+    "heroku-postbuild": "webpack -p --config build/webpack.prod.conf.js --progress",
     "lint": "vue-cli-service lint",
-    "postinstall": "npm run build",
-    "start": "node server.js"
+    "postinstall": "npm run build"
   },
   "engines": {
     "node": "12.13.0"
