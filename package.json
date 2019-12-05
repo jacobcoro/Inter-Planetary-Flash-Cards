@@ -4,15 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "dev": "node build/dev-server.js",
-    "start": "node server.js",
-    "build": "node build/build.js",
-    "heroku-postbuild": "webpack -p --config build/webpack.prod.conf.js --progress",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "postinstall": "npm run build"
-  },
-  "engines": {
-    "node": "12.13.0"
+    "postinstall": "npm run build",
+    "start": "node server.js",
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
