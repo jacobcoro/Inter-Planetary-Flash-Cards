@@ -1,5 +1,0 @@
-requests==2.22.0
-argon2==0.1.10
-PyQt5==5.13.0
-secrets==1.0.2
-pyopenssl>=19.1.0
