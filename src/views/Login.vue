@@ -181,7 +181,7 @@ export default {
             fetch(loginURL, { headers: headers })
                 .then(response => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     if (!data['token']) {
                         this.failedLogin = true
                         this.apiErrorMsg = data['error']
@@ -194,8 +194,8 @@ export default {
                         this.$router.push('deck-selection');
                     }
                     })
-                    .catch(function(error) {
-                        console.log(error);
+                    .catch(function() {
+                        //console.log(error);
                         // this returns an error
                         this.failedLogin = true
                         this.apiErrorMsg = 'Server error'
@@ -218,7 +218,7 @@ export default {
                 })
                 .then(response => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     if (!data['message  ']) {
                         this.failedLogin = true
                         this.apiErrorMsg = data['error']
@@ -226,10 +226,10 @@ export default {
                     else {
                         this.login ();
                     }
-                    }).catch(function(error) {
+                    }).catch(function() {
                         this.failedLogin = true
                         this.apiErrorMsg = 'Server error'
-                        console.log(error);
+                        //console.log(error);
                     });
         },
         toggleSigningUp () {
