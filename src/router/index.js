@@ -1,23 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from "../views/Login.vue"
-import DeckSelection from "../views/DeckSelection.vue"
-import QuizOptions from "../views/QuizOptions.vue"
-import DeckEditor from "../views/DeckEditor.vue"
-import SelfSelectQuiz from "../views/SelfSelectQuiz.vue"
-import store from "../store"
+import LoginComponent from "../views/login.vue"
+import SecureComponent from "../views/secure.vue"
 
 Vue.use(Router)
-
-async function redirectIfNotAuth (to, from, next) {
-    await store.dispatch('checkJwt')
-    if (store.getters.isAuthenticated) {
-      next()
-    } else {
-      next('/')
-    }
-  }
-
 
 export default new Router({
     routes: [
@@ -30,31 +16,12 @@ export default new Router({
         {
             path: "/login",
             name: "login",
-            component: Login
+            component: LoginComponent
         },
         {
-            path: "/deck-selection",
-            name: "deck-selection",
-            component: DeckSelection,
-            beforeEnter: redirectIfNotAuth
-        },
-        {
-            path: "/quiz-options",
-            name: "quiz-options",
-            component: QuizOptions,
-            beforeEnter: redirectIfNotAuth
-        },
-        {
-            path: "/deck-editor",
-            name: "deck-editor",
-            component: DeckEditor,
-            beforeEnter: redirectIfNotAuth
-        },
-        {
-            path: "/self-select-quiz",
-            name: "self-select-quiz",
-            component: SelfSelectQuiz,
-            beforeEnter: redirectIfNotAuth
+            path: "/secure",
+            name: "secure",
+            component: SecureComponent
         }
     ]
 })
