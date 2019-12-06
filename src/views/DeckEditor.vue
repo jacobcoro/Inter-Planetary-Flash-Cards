@@ -1,6 +1,6 @@
 <template>
     <div id="secure">
-        <h1>Secure Area</h1>
+        <h1>Deck Editor</h1>
         <p>
             This is a secure area
         </p>
