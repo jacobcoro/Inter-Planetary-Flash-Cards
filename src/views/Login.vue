@@ -191,6 +191,7 @@ export default {
                         this.$store.dispatch('checkJwt')
                         this.$store.commit('updateUserCollection', data['user_collection'])
                         this.$store.commit('updateDecksMeta', data['decks_meta'])
+                        this.$store.commit('updateDecks', data['decks'])
                         this.$router.push('deck-selection');
                     }
                     })

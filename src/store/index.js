@@ -22,7 +22,9 @@ const store = new Vuex.Store({
     jwt: null,
     jwtValid: false,
     userCollection: null,
-    decksMeta: null
+    decksMeta: null,
+    decks: null,
+    currentDeck: null
   },
   mutations: {
     updateJwt(state, newJwt) {
@@ -39,6 +41,12 @@ const store = new Vuex.Store({
     },
     updateDecksMeta(state, data) {
       state.decksMeta = data
+    },
+    updateDecks(state, data) {
+      state.decks = data
+    },
+    updateCurrentDeck(state, data) {
+      state.currentDeck = data
     }
   },
   actions: {
@@ -57,7 +65,8 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    isAuthenticated: state => state.jwtValid
+    isAuthenticated: state => state.jwtValid,
+    getDecks: state => state.decks
   },
   plugins: [vuexLocal.plugin]
 })
