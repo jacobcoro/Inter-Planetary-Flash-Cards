@@ -1,7 +1,6 @@
 <template>
   <div class="deck-selection">
-    
-    <b-container>
+    <b-container fluid>
       <h3 style="margin-left: 20px;">Deck Selection</h3>
     <b-list-group>
     <b-list-group-item v-for="deckMeta in decksMeta" :key="deckMeta.edited" button @click="openDeck(deckMeta.deck_id)">{{ deckMeta.title }}</b-list-group-item>

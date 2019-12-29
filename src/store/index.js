@@ -9,9 +9,11 @@ const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
   // Function that passes the state and returns the state with only the objects you want to store.
   reducer: (state) => ({
-    jwt: state.jwt
-    // keepThisModule: state.keepThisModule,
-    // keepThisModuleToo: state.keepThisModuleToo
+    jwt: state.jwt,
+    userCollection: state.userCollection,
+    decksMeta: state.decksMeta,
+    decks: state.decks,
+    currentDeck: state.deck
   })
   // Function that passes a mutation and lets you decide if it should update the state in localStorage.
   // filter: mutation => (true)

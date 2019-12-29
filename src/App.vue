@@ -1,47 +1,51 @@
 <template>
     <div id="app">
-        <router-view/>
+        <b-container fluid>
+            <Navbar/>
+            <router-view/>
+        </b-container>
     </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar'
     export default {
         name: 'App',
         data() {
             return {
-                authenticated: false,
-                mockAccount: {
-                    username: "nraboy",
-                    password: "password"
-                }
             }
         },
         mounted() {
-            if(!this.authenticated) {
-                this.$router.replace({ name: "login" });
-            }
+           this.redirectIfAuth()
         },
         methods: {
-            setAuthenticated(status) {
-                this.authenticated = status;
-            },
-            logout() {
-                this.authenticated = false;
+            async redirectIfAuth () {
+                await this.$store.dispatch('checkJwt')
+                if (this.$store.getters.isAuthenticated) {
+                    // but upon entry we'll need to query decks metadata and make sure we aren't missing updates
+                    // if there's no internet, post the unsynced data warning AND a special login without sync warning.
+                    this.$router.push('/deck-selection')
+                }
             }
+        },
+        components: {
+            Navbar
         }
     }
 </script>
 
-<style>
+<style lang="scss">
+
+  @import "assets/_custom.scss";
+  @import "~bootstrap/scss/bootstrap.scss";
+  @import '~bootstrap-vue/dist/bootstrap-vue.css';
+
     body {
         background-color: #F0F0F0;
+        margin: 0;
     }
     h1 {
         padding: 0;
         margin-top: 0;
-    }
-    #app {
-        width: 1024px;
-        margin: auto;
     }
 </style>

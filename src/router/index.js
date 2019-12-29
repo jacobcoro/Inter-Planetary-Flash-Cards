@@ -18,19 +18,21 @@ async function redirectIfNotAuth (to, from, next) {
     }
 }
 
+
+
 export default new Router({
     mode: 'history',
     routes: [
         {
             path: '/',
             redirect: {
-                name: "login"
+                name: "login",
             }
         },
         {
             path: "/login",
             name: "login",
-            component: Login
+            component: Login,
         },
         {
             path: "/deck-selection",
