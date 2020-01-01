@@ -42,6 +42,7 @@ export default new Router({
             path: "/home",
             name: "home",
             component: Home,
+            beforeEnter: redirectIfNotAuth
         },
         {
             path: "/deck-selection",
