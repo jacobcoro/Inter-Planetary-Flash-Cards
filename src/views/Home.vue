@@ -64,9 +64,11 @@ export default {
         },
         incorrect () {
             this.currentCardIndex++
+            this.cardFlipToggle = false
         },
         correct () {
             this.currentCardIndex++
+          this.cardFlipToggle = false
         }
     },
     created () {
