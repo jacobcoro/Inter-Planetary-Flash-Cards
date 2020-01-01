@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-            <Navbar/>
+            <Navbar id="navbar"/>
             <router-view/>
     </div>
 </template>
@@ -45,5 +45,11 @@ import Navbar from './components/Navbar'
     h1 {
         padding: 0;
         margin-top: 0;
+    }
+    #navbar {
+         position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
     }
 </style>

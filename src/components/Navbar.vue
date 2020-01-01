@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="body">
   <b-navbar toggleable="xs" variant="primary">
   <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
   <b-link to="#" ><font-awesome-icon style="color: white;" icon="search"/></b-link>     
@@ -30,5 +30,8 @@
 </script>
 
 <style scoped>
-
+#body {
+  position: absolute;
+  vertical-align: auto
+}
 </style>

@@ -1,16 +1,38 @@
 <template>
     <b-container id="review-body">
         <b-row id="top-buttons-row" class="justify-content-end">
-            <a class="btn-gray"><font-awesome-icon @click="openCardEditor()" size="0.5x" icon="edit"/></a>
+            <a class="edit"><font-awesome-icon @click="openCardEditor()" size="1x" icon="edit"/></a>
         </b-row>
-        <b-row id="card-row" @click="flipCard()">
-            <vue-flashcard 
+        <b-row id="card-row" class="" @click="flipCard()">
+            <b-col class="card-col">
+               <vue-flashcard 
+                id="main-card"
+                class ="card"
                 :isToggle= "cardFlipToggle"
                 :front="currentCard.front_text" 
                 :back="currentCard.back_text"
                 :imgFront="currentCard.front_image"
-                :imgBack="currentCard.back_image">
+                :imgBack="currentCard.back_image"
+                :height="mainCardHeight"
+                :width="mainCardWidth">
             </vue-flashcard>
+            <vue-flashcard 
+                id="next-card"
+                class ="card"
+                :front="nextCard.front_text" 
+                :back="nextCard.back_text"
+                :imgFront="nextCard.front_image"
+                :imgBack="nextCard.back_image"
+                :height="nextCardHeight"
+                :width="nextCardWidth">
+            </vue-flashcard>
+            <vue-flashcard 
+                :height="thirdCardHeight"
+                :width="thirdCardWidth"
+                id="third-card" class ="card"> 
+            </vue-flashcard>
+
+            </b-col>
         </b-row>
         <b-row id="buttons-row" >
             <b-col>
@@ -41,7 +63,13 @@ export default {
     data() {
         return {
             currentCardIndex: 0,
-            cardFlipToggle: false
+            cardFlipToggle: false,
+            mainCardHeight: "70vh",
+            mainCardWidth: "90vw",
+            nextCardHeight:  "65vh",
+            nextCardWidth:  "80vw",
+            thirdCardHeight:  "55vh",
+            thirdCardWidth:  "70vw",
         };
     },
     computed: {
@@ -50,6 +78,9 @@ export default {
         }),
         currentCard () {
             return this.reviewDeck[this.currentCardIndex]
+        },
+        nextCard () {
+            return this.reviewDeck[this.currentCardIndex + 1]
         },
     },
     methods: {
@@ -74,60 +105,71 @@ export default {
     created () {
         this.$store.dispatch('updateReviewDeck')
         this.currentCardIndex = 0
-        // this.updateCurrentCard()
     },
     components: { vueFlashcard }
 }
 </script>
 
 <style scoped>
-/* still not centered*/
 
-#review-body {
-    max-width: 350px;
-    margin: auto;
+#main-card {
+    position: absolute;
+    top: 35px;
+    border-radius: 10px;
+
 }
-/* .btn-circle.btn-md { 
-        width: 50px; 
-        height: 50px; 
-        padding: 7px 10px; 
-        border-radius: 25px; 
-   
-        font-size: 10px; 
-        text-align: center; 
-    }  */
+#next-card {
+    z-index: -1;
+    position: absolute;
+    top: 25px;
+    left: 9.5vw;
+    border-radius: 10px;
+
+}
+#third-card {
+    z-index: -2;
+    position: absolute;
+    top: 15px;
+    left: 16vw;
+    border-radius: 10px;
+
+}
+#card-col{
+    justify-content: center 
+}
 .btn-circle.btn-xl { 
-    width: 70px; 
-    height: 70px; 
+    width: 60px; 
+    height: 60px; 
     padding: 10px 16px; 
-    margin: auto;
-    border-radius: 35px; 
+    margin: 10px auto;
+    border-radius: 30px; 
     font-size: 12px; 
     text-align: center; 
     color:grey;
     background-color: white;
-    border: none
+    border: none;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
+    max-height: 25vh;
     } 
 .btn-circle.btn-xl:hover {
     box-shadow: 0 0px 25px rgba(0, 0, 0, 0.8);
 }
-.btn-gray {
-    color: gray
+.edit {
+    color: gray;
+    margin: 5px;
+    right: 3px;
+    z-index: -3;
+    position: absolute;
 }
-.btn-gray:hover{
+.edit:hover{
     cursor: pointer;
-  
-}
-.flash-card {
-    text-align: center;
-    padding-top: 15px;
-    width: 350px; 
-    height: 450px;
-    margin: 10px; 
-    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
 }
 #buttons-row {
     margin: auto;
-    text-align: right;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 </style>

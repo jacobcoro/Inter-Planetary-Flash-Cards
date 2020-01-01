@@ -1,18 +1,15 @@
 <template>
-    <div>
-        <div v-bind:style="{backgroundColor: colorFront, color: colorTextFront}" 
-        v-show="!isToggle" class="animated flipInY flashcard">
-            <div class="card-content center">
+    <div id="main" class="card">
+        <div v-bind:style="{height: height, width: width, backgroundColor: colorFront, color: colorTextFront}" 
+        v-show="!isToggle" class="animated flipInY flashcard card">
                 <p v-bind:style="{fontSize: textSizeFront,fontWeight: 'bold'}">{{front}}</p>
-                <img v-if="imgFront!=''" :src="imgFront" width="350" height="200">
-            </div>
+                <img class="img" v-if="imgFront!=''" :src="imgFront">
         </div>
-        <div v-bind:style="{backgroundColor: colorBack, color: colorTextBack}" 
+        <div v-bind:style="{height: height, width: width, backgroundColor: colorBack, color: colorTextBack}" 
         v-show="isToggle" class="animated flipInY flashcard">
             <div class="card-content center">
                 <p v-bind:style="{fontSize: textSizeBack, fontWeight: 'bold'}">{{back}}</p>
-                <!-- need to change this to resize photo based on original but with a max -->
-                <img v-if="imgBack!=''" :src="imgBack" width="350" height="200">
+                <img class="img" v-if="imgBack!=''" :src="imgBack">
             </div>
         </div>
     </div>
@@ -67,6 +64,14 @@ export default {
         isToggle: {
             type: Boolean,
             // default: false
+        },
+        height: {
+              type: String,
+            default: '75vw'
+        },
+        width: {
+              type: String,
+            default: '90vw'
         }
 
 
@@ -76,19 +81,17 @@ export default {
 
 
 <style scoped>
-.center {
-    text-align: center;
+#main {
+    border-radius: 10px;
 }
-
 .flashcard {
     cursor: pointer;
     border-radius: 10px;
-    width: 400px;
-    height: 500px;
-    margin: 20px;
     padding: 25px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     text-align: left;
+    overflow-y: auto;
+
 }
 
 .flashcard:hover {
@@ -96,8 +99,14 @@ export default {
 }
 
 .animated {
-    animation-duration: 1s;
+    animation-duration:0.8s;
     animation-fill-mode: both;
+}
+
+.img {
+    object-fit: fill;
+    width: 80vw;
+    max-height: 60vh;
 }
 
 @keyframes flipInY {
