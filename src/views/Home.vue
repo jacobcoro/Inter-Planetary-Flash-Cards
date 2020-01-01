@@ -84,7 +84,7 @@ export default {
 /* still not centered*/
 
 #review-body {
-    max-width: 400px;
+    max-width: 350px;
     margin: auto;
 }
 /* .btn-circle.btn-md { 
@@ -121,7 +121,7 @@ export default {
 .flash-card {
     text-align: center;
     padding-top: 15px;
-    width: 400px; 
+    width: 350px; 
     height: 450px;
     margin: 10px; 
     box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
