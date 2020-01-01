@@ -111,6 +111,17 @@ export default {
 </script>
 
 <style scoped>
+.edit {
+    color: gray;
+    margin: 5px;
+    right: 3px;
+    z-index: -3;
+    position: absolute;
+}
+.edit:hover{
+    cursor: pointer;
+}
+
 
 #main-card {
     position: absolute;
@@ -134,9 +145,6 @@ export default {
     border-radius: 10px;
 
 }
-#card-col{
-    justify-content: center 
-}
 .btn-circle.btn-xl { 
     width: 60px; 
     height: 60px; 
@@ -154,16 +162,7 @@ export default {
 .btn-circle.btn-xl:hover {
     box-shadow: 0 0px 25px rgba(0, 0, 0, 0.8);
 }
-.edit {
-    color: gray;
-    margin: 5px;
-    right: 3px;
-    z-index: -3;
-    position: absolute;
-}
-.edit:hover{
-    cursor: pointer;
-}
+
 #buttons-row {
     margin: auto;
     text-align: center;

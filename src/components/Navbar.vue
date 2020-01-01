@@ -30,8 +30,5 @@
 </script>
 
 <style scoped>
-#body {
-  position: absolute;
-  vertical-align: auto
-}
+
 </style>

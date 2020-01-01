@@ -47,9 +47,10 @@ import Navbar from './components/Navbar'
         margin-top: 0;
     }
     #navbar {
-         position: sticky;
+    position: sticky;
   top: 0;
   right: 0;
   width: 100%;
+  z-index: 1000;
     }
 </style>

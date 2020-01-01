@@ -1,7 +1,7 @@
 <template>
-    <div id="main" class="card">
+    <div id="main">
         <div v-bind:style="{height: height, width: width, backgroundColor: colorFront, color: colorTextFront}" 
-        v-show="!isToggle" class="animated flipInY flashcard card">
+        v-show="!isToggle" class="animated flipInY flashcard">
                 <p v-bind:style="{fontSize: textSizeFront,fontWeight: 'bold'}">{{front}}</p>
                 <img class="img" v-if="imgFront!=''" :src="imgFront">
         </div>
@@ -81,9 +81,6 @@ export default {
 
 
 <style scoped>
-#main {
-    border-radius: 10px;
-}
 .flashcard {
     cursor: pointer;
     border-radius: 10px;
@@ -111,23 +108,23 @@ export default {
 
 @keyframes flipInY {
     from {
-        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(300px) rotate3d(0, 1, 0, 90deg);
         animation-timing-function: ease-in;
         opacity: 0;
     }
     40% {
-        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(300px) rotate3d(0, 1, 0, -20deg);
         animation-timing-function: ease-in;
     }
     60% {
-        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(300px) rotate3d(0, 1, 0, 10deg);
         opacity: 1;
     }
     80% {
-        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(300px) rotate3d(0, 1, 0, -5deg);
     }
     to {
-        transform: perspective(400px);
+        transform: perspective(300px);
     }
 }
 
