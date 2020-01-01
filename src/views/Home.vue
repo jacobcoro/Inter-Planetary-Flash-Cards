@@ -36,7 +36,7 @@
         </b-row>
         <b-row id="buttons-row" >
             <b-col>
-                <b-button class="btn-circle btn-xl" @click="incorrect()">
+                <b-button v-if="cardFlipToggle === true" class="btn-circle btn-xl" @click="incorrect()">
                     <font-awesome-icon size="2x" icon="times"/>
                 </b-button>
             </b-col>
@@ -46,7 +46,7 @@
                 </b-button>
             </b-col>
             <b-col>    
-                <b-button class="btn-circle btn-xl" @click="correct()">
+                <b-button v-if="cardFlipToggle === true" class="btn-circle btn-xl" @click="correct()">
                     <font-awesome-icon size="2x" icon="check"/>
                 </b-button>
             </b-col>
@@ -70,6 +70,8 @@ export default {
             nextCardWidth:  "80vw",
             thirdCardHeight:  "55vh",
             thirdCardWidth:  "70vw",
+            cardsCompleted: 0,
+            cardsTotal: 0,
         };
     },
     computed: {
@@ -81,7 +83,7 @@ export default {
         },
         nextCard () {
             return this.reviewDeck[this.currentCardIndex + 1]
-        },
+        }
     },
     methods: {
         // updateCurrentCard () {
@@ -96,10 +98,17 @@ export default {
         incorrect () {
             this.currentCardIndex++
             this.cardFlipToggle = false
+            this.NavbarProgess()
+
         },
         correct () {
             this.currentCardIndex++
-          this.cardFlipToggle = false
+            this.cardFlipToggle = false
+            this.cardsCompleted ++
+            this.NavbarProgess()
+        },
+        NavbarProgess() {
+            this.$store.dispatch('NavProgress', this.cardsCompleted)
         }
     },
     created () {

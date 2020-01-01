@@ -28,6 +28,9 @@ const store = new Vuex.Store({
     decks: null,
     currentDeck: null,
     reviewDeck: null,
+
+    navProgressCounter: ""
+
   },
   mutations: {
     updateJwt(state, newJwt) {
@@ -53,9 +56,16 @@ const store = new Vuex.Store({
     },
     updateReviewDeck(state, data) {
       state.reviewDeck = data
+    },
+    updateProgressCounter(state, data) {
+      state.navProgressCounter = data
     }
   },
   actions: {
+    NavProgress (context, completedCards) {
+        let outputString = length(context.reviewDeck) + " / "  + completedCards
+        context.commit('updateProgressCounter', outputString)
+    },
     logout(context) {
       context.commit('deleteJwt')
       context.commit('toggleJwtValid', false)
@@ -87,7 +97,8 @@ const store = new Vuex.Store({
   },
   getters: {
     isAuthenticated: state => state.jwtValid,
-    getDecks: state => state.decks
+    getDecks: state => state.decks,
+    navProgressCounter: state => state.navProgressCounter
   },
   plugins: [vuexLocal.plugin]
 })
