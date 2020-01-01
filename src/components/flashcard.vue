@@ -1,12 +1,14 @@
 <template>
     <div>
-        <div @click="isToggle=!isToggle"  v-bind:style="{backgroundColor: colorFront, color: colorTextFront}" v-show="!isToggle" class="animated flipInY flashcard">
+        <div v-bind:style="{backgroundColor: colorFront, color: colorTextFront}" 
+        v-show="!isToggle" class="animated flipInY flashcard">
             <div class="card-content center">
                 <p v-bind:style="{fontSize: textSizeFront,fontWeight: 'bold'}">{{front}}</p>
                 <img v-if="imgFront!=''" :src="imgFront" width="350" height="200">
             </div>
         </div>
-        <div @click="isToggle=!isToggle" v-bind:style="{backgroundColor: colorBack, color: colorTextBack}" v-show="isToggle" class="animated flipInY flashcard">
+        <div v-bind:style="{backgroundColor: colorBack, color: colorTextBack}" 
+        v-show="isToggle" class="animated flipInY flashcard">
             <div class="card-content center">
                 <p v-bind:style="{fontSize: textSizeBack, fontWeight: 'bold'}">{{back}}</p>
                 <!-- need to change this to resize photo based on original but with a max -->
@@ -64,7 +66,7 @@ export default {
         },
         isToggle: {
             type: Boolean,
-            default: false
+            // default: false
         }
 
 

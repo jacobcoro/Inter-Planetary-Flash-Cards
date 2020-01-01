@@ -58,6 +58,7 @@ const store = new Vuex.Store({
   actions: {
     logout(context) {
       context.commit('deleteJwt')
+      context.commit('toggleJwtValid', false)
     },
     checkJwt(context) {
       let jwt = context.state.jwt

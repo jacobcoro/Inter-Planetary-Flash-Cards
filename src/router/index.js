@@ -17,8 +17,8 @@ async function redirectIfNotAuth (to, from, next) {
     await store.dispatch('checkJwt')
     if (store.getters.isAuthenticated) {
       next()
-    } else if (this.$router.path !== '/') {
-      next('/')
+    } else if (this.$router.path !== '/login') {
+      next('/login')
     }
 }
 

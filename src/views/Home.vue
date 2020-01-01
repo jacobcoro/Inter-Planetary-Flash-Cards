@@ -3,7 +3,7 @@
         <b-row id="top-buttons-row" class="justify-content-end">
             <a class="btn-gray"><font-awesome-icon @click="openCardEditor()" size="0.5x" icon="edit"/></a>
         </b-row>
-        <b-row id="card-row">
+        <b-row id="card-row" @click="flipCard()">
             <vue-flashcard 
                 :isToggle= "cardFlipToggle"
                 :front="currentCard.front_text" 
@@ -50,12 +50,12 @@ export default {
         }),
         currentCard () {
             return this.reviewDeck[this.currentCardIndex]
-        }
+        },
     },
     methods: {
-        updateCurrentCard () {
-            this.currentCard = this.reviewDeck[this.currentCardIndex]
-        },
+        // updateCurrentCard () {
+        //     this.currentCard = this.reviewDeck[this.currentCardIndex]
+        // },
         openCardEditor(){
             this.$router.push()
         },
@@ -69,10 +69,10 @@ export default {
             this.currentCardIndex++
         }
     },
-    mounted () {
+    created () {
         this.$store.dispatch('updateReviewDeck')
         this.currentCardIndex = 0
-        this.updateCurrentCard()
+        // this.updateCurrentCard()
     },
     components: { vueFlashcard }
 }
@@ -104,6 +104,7 @@ export default {
     text-align: center; 
     color:grey;
     background-color: white;
+    border: none
     } 
 .btn-circle.btn-xl:hover {
     box-shadow: 0 0px 25px rgba(0, 0, 0, 0.8);
