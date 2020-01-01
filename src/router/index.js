@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Login from "../views/Login.vue"
+import Home from "../views/Home.vue"
 import DeckSelection from "../views/DeckSelection.vue"
 import QuizOptions from "../views/QuizOptions.vue"
 import DeckEditor from "../views/DeckEditor.vue"
-import SelfSelectQuiz from "../views/SelfSelectQuiz.vue"
+import Settings from "../views/Settings.vue"
+import CardEditor from "../views/CardEditor.vue"
+
 import store from "../store"
 
 Vue.use(Router)
@@ -35,6 +39,11 @@ export default new Router({
             component: Login,
         },
         {
+            path: "/home",
+            name: "home",
+            component: Home,
+        },
+        {
             path: "/deck-selection",
             name: "deck-selection",
             component: DeckSelection,
@@ -53,9 +62,15 @@ export default new Router({
             beforeEnter: redirectIfNotAuth
         },
         {
-            path: "/self-select-quiz",
-            name: "self-select-quiz",
-            component: SelfSelectQuiz,
+            path: "/settings",
+            name: "settings",
+            component: Settings,
+            beforeEnter: redirectIfNotAuth
+        },
+        {
+            path: "/card-editor",
+            name: "card-editor",
+            component: CardEditor,
             beforeEnter: redirectIfNotAuth
         }
     ]

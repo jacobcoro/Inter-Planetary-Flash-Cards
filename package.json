@@ -25,6 +25,7 @@
     "toasts": "^1.0.0",
     "vee-validate": "^3.1.3",
     "vue": "^2.6.10",
+    "vue-flashcard": "^1.1.6",
     "vue-router": "^3.1.3",
     "vuex": "^3.0.1",
     "vuex-persist": "^2.2.0"

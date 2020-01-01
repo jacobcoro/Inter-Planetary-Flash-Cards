@@ -26,7 +26,8 @@ const store = new Vuex.Store({
     userCollection: null,
     decksMeta: null,
     decks: null,
-    currentDeck: null
+    currentDeck: null,
+    reviewDeck: null,
   },
   mutations: {
     updateJwt(state, newJwt) {
@@ -49,6 +50,9 @@ const store = new Vuex.Store({
     },
     updateCurrentDeck(state, data) {
       state.currentDeck = data
+    },
+    updateReviewDeck(state, data) {
+      state.reviewDeck = data
     }
   },
   actions: {
@@ -64,6 +68,20 @@ const store = new Vuex.Store({
       const exp = new Date(data.exp * 1000) // JS deals with dates in milliseconds since epoch
       const now = new Date()
       context.commit('toggleJwtValid', now < exp)
+    },
+    updateReviewDeck(context) {
+      let decks = context.state.decks
+      let reviewDeck = []
+      let deck
+      for (deck of decks) {
+        let card
+        for (card of deck.cards) {
+          if (card.card_tags.includes('Daily Review')){
+            reviewDeck.push(card)
+          }
+        }
+      }
+      context.commit('updateReviewDeck', reviewDeck)
     }
   },
   getters: {

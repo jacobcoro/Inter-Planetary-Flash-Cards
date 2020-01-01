@@ -37,11 +37,11 @@
         
         <div id="login-signup-buttons">
         <span>
-            <b-button v-if="signingUp" :disabled="invalidSignUp" type="submit" @click="SignUp()" variant="warning">Sign up</b-button>
-            <b-button v-else :disabled="invalidLogin" type="submit" @click="login()" variant="warning">Log in</b-button>
+            <b-button v-if="signingUp" :disabled="invalidSignUp" type="submit" @click="SignUp()" variant="primary">Sign up</b-button>
+            <b-button v-else :disabled="invalidLogin" type="submit" @click="login()" variant="primary">Log in</b-button>
             
-            <a v-if="signingUp" type="submit" id="sign-up-a" @click="toggleSigningUp()" variant="warning">Returning user? Log in now!</a>
-            <a v-else type="submit" id="sign-up-a" @click="toggleSigningUp()" variant="warning">New account? Sign up now!</a>
+            <a v-if="signingUp" type="submit" id="sign-up-a" @click="toggleSigningUp()" variant="primary">Returning user? Log in now!</a>
+            <a v-else type="submit" id="sign-up-a" @click="toggleSigningUp()" variant="primary">New account? Sign up now!</a>
         </span>
         </div>
     </b-form>
@@ -192,7 +192,7 @@ export default {
                         this.$store.commit('updateUserCollection', data['user_collection'])
                         this.$store.commit('updateDecksMeta', data['decks_meta'])
                         this.$store.commit('updateDecks', data['decks'])
-                        this.$router.push('deck-selection');
+                        this.$router.push('home');
                     }
                     })
                     .catch(function() {

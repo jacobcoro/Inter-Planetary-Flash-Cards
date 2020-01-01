@@ -8,10 +8,11 @@
   <b-link to="#" class="icon"><font-awesome-icon style="color: white;" icon="cloud"/></b-link>     
   <b-collapse  id="nav-collapse" is-nav>
     <b-navbar-nav >
-    <b-nav-item href="#">Settings</b-nav-item>
+    <b-nav-item to="/home">Review</b-nav-item>
+    <b-nav-item to="/Settings">Settings</b-nav-item>
     <b-nav-item to="/deck-selection">Decks</b-nav-item>
-    <b-nav-item href="#" disabled>Lessons</b-nav-item>
-    <b-nav-item href="#" disabled>Classes</b-nav-item>
+    <b-nav-item to="#" disabled>Lessons</b-nav-item>
+    <b-nav-item to="#" disabled>Classes</b-nav-item>
     <b-nav-form>
     <b-form-input size="sm" class="mr-sm-1" placeholder="find decks and classes"></b-form-input>
       <b-button size="sm" type="submit">Search</b-button>

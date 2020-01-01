@@ -1,9 +1,7 @@
 <template>
     <div id="app">
-        <b-container fluid>
             <Navbar/>
             <router-view/>
-        </b-container>
     </div>
 </template>
 
@@ -24,7 +22,7 @@ import Navbar from './components/Navbar'
                 if (this.$store.getters.isAuthenticated) {
                     // but upon entry we'll need to query decks metadata and make sure we aren't missing updates
                     // if there's no internet, post the unsynced data warning AND a special login without sync warning.
-                    this.$router.push('/deck-selection')
+                    this.$router.push('/home')
                 }
             }
         },
