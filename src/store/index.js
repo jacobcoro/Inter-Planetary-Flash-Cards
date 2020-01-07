@@ -13,7 +13,9 @@ const vuexLocal = new VuexPersistence({
     userCollection: state.userCollection,
     decksMeta: state.decksMeta,
     decks: state.decks,
-    currentDeck: state.deck
+    currentDeck: state.deck,
+    reviewDeck: state.reviewDeck,
+
   })
   // Function that passes a mutation and lets you decide if it should update the state in localStorage.
   // filter: mutation => (true)
