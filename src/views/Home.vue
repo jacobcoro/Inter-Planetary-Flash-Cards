@@ -1,7 +1,7 @@
 <template>
     <b-container id="review-body">
         <b-row id="top-buttons-row" class="justify-content-end">
-            <a class="edit"><font-awesome-icon @click="openCardEditor()" size="1x" icon="edit"/></a>
+            <a class="edit"><font-awesome-icon @click="editCard(currentCard, reviewDeck)" size="1x" icon="edit"/></a>
         </b-row>
         <b-row id="card-row" class="" @click="flipCard()">
             <b-col class="card-col">
@@ -86,12 +86,6 @@ export default {
         }
     },
     methods: {
-        // updateCurrentCard () {
-        //     this.currentCard = this.reviewDeck[this.currentCardIndex]
-        // },
-        openCardEditor(){
-            this.$router.push()
-        },
         flipCard () {
             this.cardFlipToggle=!this.cardFlipToggle
         },
@@ -108,11 +102,17 @@ export default {
             this.NavbarProgess()
         },
         NavbarProgess() {
-            this.$store.dispatch('NavProgress', this.cardsCompleted)
+            this.$store.dispatch('navProgress', this.cardsCompleted)
+        },
+        editCard(card, deck) {
+            this.$store.commit('updateCardToEdit', card)
+            this.$store.commit('updateCardToEditsDeck', deck)
+            this.$router.push('/card-editor')
         }
     },
     created () {
         this.$store.dispatch('updateReviewDeck')
+        this.$store.dispatch('navProgress', 0)
         this.currentCardIndex = 0
     },
     components: { vueFlashcard }

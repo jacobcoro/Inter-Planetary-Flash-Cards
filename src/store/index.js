@@ -30,7 +30,8 @@ const store = new Vuex.Store({
     decks: null,
     currentDeck: null,
     reviewDeck: null,
-
+    cardToEdit: null,
+    cardToEditsDeck: null,
     navProgressCounter: ""
 
   },
@@ -61,11 +62,17 @@ const store = new Vuex.Store({
     },
     updateProgressCounter(state, data) {
       state.navProgressCounter = data
+    },
+    updateCardToEdit (state, card) {
+      state.cardToEdit = card
+    },
+    updateCardToEditsDeck (state, deck) {
+      state.cardToEditsDeck = deck
     }
   },
   actions: {
-    NavProgress (context, completedCards) {
-        let outputString = length(context.reviewDeck) + " / "  + completedCards
+    navProgress (context, completedCards) {
+        let outputString = completedCards + " / "  + context.state.reviewDeck.length
         context.commit('updateProgressCounter', outputString)
     },
     logout(context) {

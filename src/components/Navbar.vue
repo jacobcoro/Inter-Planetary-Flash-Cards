@@ -26,7 +26,7 @@
 <script>
 
     export default {
-        name: 'deck-selection',
+        name: 'navbar',
   data () {
     return {
     }

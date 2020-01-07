@@ -5,9 +5,7 @@
         </b-row >
         <b-row align-h="start">
         <b-col cols="11">
-        <b-card 
-        v-for="card in deck.cards" :key="card.card_id"
-        style="max-width: 400px; margin: 10px; box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);">
+        <b-card id="card" v-for="card in deck.cards" :key="card.card_id">
             <b-container>
             <b-row >
                 <b-col v-if="card.front_image" cols="5">
@@ -56,4 +54,10 @@ export default {
 </script>
 
 <style scoped>
+#card {
+    max-width: 400px;
+    margin: 10px;
+    box-shadow: 0px 0px 15px 5px
+    rgba(0, 0, 0, 0.1);
+}
 </style>

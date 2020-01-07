@@ -1,13 +1,15 @@
 <template>
     <div id="main">
-        <div v-bind:style="{height: height, width: width, backgroundColor: colorFront, color: colorTextFront}" 
+        <div v-bind:style="{width: width, backgroundColor: colorFront, color: colorTextFront}" 
         v-show="!isToggle" class="animated flipInY flashcard">
+            <div class="card-content">
                 <p v-bind:style="{fontSize: textSizeFront,fontWeight: 'bold'}">{{front}}</p>
                 <img class="img" v-if="imgFront!=''" :src="imgFront">
+            </div>
         </div>
-        <div v-bind:style="{height: height, width: width, backgroundColor: colorBack, color: colorTextBack}" 
+        <div v-bind:style="{width: width, backgroundColor: colorBack, color: colorTextBack}" 
         v-show="isToggle" class="animated flipInY flashcard">
-            <div class="card-content center">
+            <div class="card-content">
                 <p v-bind:style="{fontSize: textSizeBack, fontWeight: 'bold'}">{{back}}</p>
                 <img class="img" v-if="imgBack!=''" :src="imgBack">
             </div>
@@ -20,7 +22,40 @@ export default {
         return {
             
         }
-    }, props: {
+    },
+    computed: {
+        textSizeFront () {
+            if (this.front.length < 20) {
+                return '4em'
+            }
+            else if (this.front.length < 50) {
+                return '3em'
+            }
+            else if (this.front.length < 250) {
+                return '2em'
+            }
+            else if (this.front.length < 350) {
+                return '1.5em'
+            }
+            else return '1em'
+        },
+        textSizeBack () {
+            if (this.back.length < 20) {
+                return '4em'
+            }
+            else if (this.back.length < 50) {
+                return '3em'
+            }
+            else if (this.back.length < 250) {
+                return '2em'
+            }
+            else if (this.back.length < 350) {
+                return '1.5em'
+            }
+            else return '1em'
+        }
+    }, 
+    props: {
         imgFront: {
             type: String,
             default: ''
@@ -37,14 +72,14 @@ export default {
             type: String,
             default: ''
         },
-        textSizeFront: {
-            type: String,
-            default: '1.5em'
-        },
-        textSizeBack: {
-            type: String,
-            default: '1.5em'
-        },
+        // textSizeFront: {
+        //     type: String,
+        //     default: '1.5em'
+        // },
+        // textSizeBack: {
+        //     type: String,
+        //     default: '1.5em'
+        // },
         colorTextFront: {
             type: String,
             default: 'black'
@@ -65,10 +100,10 @@ export default {
             type: Boolean,
             // default: false
         },
-        height: {
-              type: String,
-            default: '75vw'
-        },
+        // height: {
+        //       type: String,
+        //     default: '60vh'
+        // },
         width: {
               type: String,
             default: '90vw'
@@ -84,15 +119,21 @@ export default {
 .flashcard {
     cursor: pointer;
     border-radius: 10px;
-    padding: 25px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
-    text-align: left;
-    overflow-y: auto;
-
+    height: calc(100vh - 180px);
 }
-
 .flashcard:hover {
     box-shadow: 0 0px 25px rgba(0, 0, 0, 0.8);
+}
+/* this brings the scroll bar into the card so its not creating a square corner */
+.card-content {
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-left: 25px;
+    padding-top: 25px;
+    margin-bottom: 0px;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .animated {
@@ -102,8 +143,8 @@ export default {
 
 .img {
     object-fit: fill;
-    width: 80vw;
-    max-height: 60vh;
+    width: 78vw;
+    max-height: 50vh;
 }
 
 @keyframes flipInY {
