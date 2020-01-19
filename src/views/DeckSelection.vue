@@ -33,6 +33,9 @@ export default {
       }
       this.$router.push('/deck-editor')
     }
+  },
+  created () {
+    this.$store.dispatch('refreshDecksMeta')
   }
 }
 </script>

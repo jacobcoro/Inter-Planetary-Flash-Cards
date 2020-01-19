@@ -91,4 +91,9 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
+
 $nav-tabs-link-active-color:        rgb(255, 255, 255);
+$navbar-dark-color:                 rgba($white, 1);
+$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-dark-toggler-border-color:  rgba($white, 0) !default;
+

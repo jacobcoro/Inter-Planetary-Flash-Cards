@@ -50,6 +50,8 @@
 </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
     name: 'Login',
     data() {
@@ -69,6 +71,9 @@ export default {
         }
     },
     computed: {
+        ...mapState({
+           serverURL: 'serverURL'
+        }),
         emailValidation () {
             let email = this.input.email
             if (email.length < 4 || email.length > 25) {
@@ -181,7 +186,7 @@ export default {
         login () {
             this.loggingIn = true
             this.failedLogin = false
-            let loginURL = "https://ipfc-midware.herokuapp.com/login";
+            let loginURL = this.serverURL + "/login";
             let headers = new Headers();
             let username = this.input.email;
             let password = this.input.password;
@@ -201,6 +206,7 @@ export default {
                         this.$store.commit('updateUserCollection', data['user_collection'])
                         this.$store.commit('updateDecksMeta', data['decks_meta'])
                         this.$store.commit('updateDecks', data['decks'])
+                        this.$store.dispatch('refreshLastSyncsData')
                         this.$router.push('home');
                     }
                     this.loggingIn = false
@@ -216,7 +222,7 @@ export default {
         SignUp () {
             this.loggingIn = true
             this.failedLogin = false
-            let signupURL = "https://ipfc-midware.herokuapp.com/sign_up";
+            let signupURL = this.serverURL + "/sign_up";
             let data = {
                 'email': this.input.email,
                 'password': this.input.password,
@@ -231,7 +237,7 @@ export default {
                 .then(response => response.json())
                 .then((data) => {
                     // console.log(data);
-                    if (!data['message  ']) {
+                    if (!data['message']) {
                         this.failedLogin = true
                         this.apiErrorMsg = data['error']
                     }

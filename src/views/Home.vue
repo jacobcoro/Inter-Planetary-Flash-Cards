@@ -5,33 +5,38 @@
         </b-row>
         <b-row id="card-row" class="" @click="flipCard()">
             <b-col class="card-col">
-               <vue-flashcard 
+               <vue-flashcard
                 id="main-card"
-                class ="card"
                 :isToggle= "cardFlipToggle"
                 :front="currentCard.front_text" 
                 :back="currentCard.back_text"
                 :imgFront="currentCard.front_image"
                 :imgBack="currentCard.back_image"
-                :height="mainCardHeight"
-                :width="mainCardWidth">
+                >
             </vue-flashcard>
-            <vue-flashcard 
-                id="next-card"
-                class ="card"
-                :front="nextCard.front_text" 
-                :back="nextCard.back_text"
-                :imgFront="nextCard.front_image"
-                :imgBack="nextCard.back_image"
-                :height="nextCardHeight"
-                :width="nextCardWidth">
-            </vue-flashcard>
-            <vue-flashcard 
-                :height="thirdCardHeight"
-                :width="thirdCardWidth"
-                id="third-card" class ="card"> 
-            </vue-flashcard>
-
+            <div id="next-card-padding-outer">
+                <div id="next-card-padding">
+                    <vue-flashcard 
+                        id="next-card"
+                        :front="nextCard.front_text" 
+                        :back="nextCard.back_text"
+                        :imgFront="nextCard.front_image"
+                        :imgBack="nextCard.back_image"
+                        >
+                    </vue-flashcard>
+                </div>
+            </div>
+            <div id="third-card-padding-outer">
+                <div id="third-card-padding">
+                    <vue-flashcard 
+                        id="third-card" class ="card"
+                        front="   stuff   " 
+                        back="     stuff   "
+                        :imgFront="nextCard.front_image"
+                        :imgBack="nextCard.back_image"> 
+                    </vue-flashcard>
+                </div>
+            </div>
             </b-col>
         </b-row>
         <b-row id="buttons-row" >
@@ -64,39 +69,33 @@ export default {
         return {
             currentCardIndex: 0,
             cardFlipToggle: false,
-            mainCardHeight: "70vh",
-            mainCardWidth: "90vw",
-            nextCardHeight:  "65vh",
-            nextCardWidth:  "80vw",
-            thirdCardHeight:  "55vh",
-            thirdCardWidth:  "70vw",
             cardsCompleted: 0,
             cardsTotal: 0,
-        };
+        }
     },
     computed: {
         ...mapState({
             reviewDeck: 'reviewDeck'
         }),
         currentCard () {
-            return this.reviewDeck[this.currentCardIndex]
+            return this.reviewDeck.cards[this.currentCardIndex]
         },
         nextCard () {
-            return this.reviewDeck[this.currentCardIndex + 1]
-        }
+            return this.reviewDeck.cards[this.currentCardIndex + 1]
+        },
     },
     methods: {
         flipCard () {
             this.cardFlipToggle=!this.cardFlipToggle
         },
         incorrect () {
-            this.currentCardIndex++
+            this.currentCardIndex ++
             this.cardFlipToggle = false
             this.NavbarProgess()
 
         },
         correct () {
-            this.currentCardIndex++
+            this.currentCardIndex ++
             this.cardFlipToggle = false
             this.cardsCompleted ++
             this.NavbarProgess()
@@ -104,15 +103,16 @@ export default {
         NavbarProgess() {
             this.$store.dispatch('navProgress', this.cardsCompleted)
         },
-        editCard(card, deck) {
-            this.$store.commit('updateCardToEdit', card)
-            this.$store.commit('updateCardToEditsDeck', deck)
+        editCard(card, reviewDeck) {
+            this.$store.commit('updateCardToEditIndex', reviewDeck.cards.indexOf(card))
             this.$router.push('/card-editor')
         }
     },
     created () {
         this.$store.dispatch('updateReviewDeck')
         this.$store.dispatch('navProgress', 0)
+        this.$store.dispatch('refreshLastSyncsData')
+        this.$store.commit('updateCurrentDeck', this.reviewDeck)
         this.currentCardIndex = 0
     },
     components: { vueFlashcard }
@@ -124,35 +124,54 @@ export default {
     color: gray;
     margin: 5px;
     right: 3px;
-    z-index: -3;
+    z-index: 1;
     position: absolute;
 }
 .edit:hover{
     cursor: pointer;
 }
 
-
 #main-card {
+    margin: auto;
+    margin-top: 30px;
+    max-width: 600px;
+}
+#next-card-padding-outer{
+    z-index: -1;
     position: absolute;
-    top: 35px;
-    border-radius: 10px;
-
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+#next-card-padding {
+    width: 82%;
+    margin: auto;
+    z-index: -1;
 }
 #next-card {
     z-index: -1;
+    margin: auto;
+    margin-top: 20px;
+    max-width: 480px;
+}
+#third-card-padding-outer{
+    z-index: -2;
     position: absolute;
-    top: 25px;
-    left: 9.5vw;
-    border-radius: 10px;
-
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+#third-card-padding {
+    width: 70%;
+    margin: auto ;
+    z-index: -2;
 }
 #third-card {
     z-index: -2;
-    position: absolute;
-    top: 15px;
-    left: 16vw;
+    margin: auto;
+    margin-top: 10px;
+    max-width: 380px;
     border-radius: 10px;
-
 }
 .btn-circle.btn-xl { 
     width: 60px; 
@@ -179,5 +198,7 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.3)
+
 }
 </style>
