@@ -117,7 +117,7 @@ export default {
             let decks = this.$store.state.decks
             for (let deck of decks) {
                 if (!deck.icon_color) {
-                                console.log("setting deck icons")
+                // console.log("setting deck icons")
 
                  deck.icon_color = this.generateRandomHslaColor()
                     deck.edited = Math.round(new Date().getTime() / 1000);

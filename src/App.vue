@@ -28,21 +28,21 @@ import _ from 'lodash';
         watch: {
             decks: {
                 handler: function() {
-                    console.log('watched decks for syncing')
+                    // console.log('watched decks for syncing')
                     this.sync()
                 },
                 deep: true
             }, 
             syncing: function() {
                 if (this.syncing === false) {
-                    console.log('watched syncing for syncing')
+                    // console.log('watched syncing for syncing')
                     this.sync()
                 }
             }
         },
         methods: {
             sync: _.debounce(function(){
-                 console.log('debounced sync')
+                //  console.log('debounced sync')
                 this.$store.dispatch('sync')  
             }, 60000),
             async redirectIfAuth () {
