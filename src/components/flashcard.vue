@@ -153,7 +153,6 @@ export default {
 .img {
     object-fit: fill;
     width: 100%;
-    max-height: 50vh;
     margin: auto;
 }
 

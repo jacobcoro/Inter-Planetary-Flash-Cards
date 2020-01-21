@@ -106,14 +106,38 @@ export default {
         editCard(card, reviewDeck) {
             this.$store.commit('updateCardToEditIndex', reviewDeck.cards.indexOf(card))
             this.$router.push('/card-editor')
+        },
+        generateRandomHslaColor (){
+            // round to an interval of 20, 0-360
+            let hue = Math.round(Math.random() * 360 / 20) * 20
+            let color = `hsla(${hue}, 100%, 50%, 1)`
+            return color
+        },
+        setAllDeckColors () {
+            let decks = this.$store.state.decks
+            for (let deck of decks) {
+                if (!deck.icon_color) {
+                                console.log("setting deck icons")
+
+                 deck.icon_color = this.generateRandomHslaColor()
+                    deck.edited = Math.round(new Date().getTime() / 1000);
+            this.$store.commit('updateDeck', deck)
+                }
+            
+            }
         }
     },
     created () {
+        this.setAllDeckColors()
         this.$store.dispatch('updateReviewDeck')
         this.$store.dispatch('navProgress', 0)
-        this.$store.dispatch('refreshLastSyncsData')
+        if (this.$store.state.lastSyncsData === null) {
+            this.$store.dispatch('refreshLastSyncsData')
+        }
         this.$store.commit('updateCurrentDeck', this.reviewDeck)
         this.currentCardIndex = 0
+        this.$store.commit('toggleNavNewCardDisabled', false)
+
     },
     components: { vueFlashcard }
 }
