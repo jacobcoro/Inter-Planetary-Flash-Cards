@@ -176,6 +176,14 @@ const store = new Vuex.Store({
         return null
       }
       else{
+        // got to entirely rewrite whole app... everytime access deck, return only undeleted decks. 
+        // only need deleted decks info when syncing... could make a second list to 
+        // get serverDecksMeta (check and update server from pinata first )
+        // 
+        // the server edited is newer, add deck_id to get list. 
+        // if server edited is older, add deck_id to upload list. 
+        // if local deleted is true, but server deleted isn't, add to upload list
+        // if server deleted is true, but local deleted isn't, delete locally (mark as deleted)
         context.commit('toggleSyncing', true)
         context.commit('toggleFailedSync', false)
         // these need to be deep copies, so they don't change in the middle of the sync
@@ -189,7 +197,6 @@ const store = new Vuex.Store({
         if (userCollection != lastUserCollection) {
           // console.log('user collection changed')
         }
-
         if (decks != lastSyncDecks) {
         // console.log("decks changed (but maybe just order, not content)")
           let lastSyncDecksDeckIds = []
@@ -217,8 +224,11 @@ const store = new Vuex.Store({
                     method: 'PUT',
                     })
                     .then(response => response.json())
-                    .then(() => {
-                        // console.log(responseData);
+                    .then((responseData) => {
+                         console.log(responseData)
+                        if (responseData.message !== 'Up to date') {
+                          console.log(responseData)
+                        }
                         // console.log('finished syncing')   
                         // if (response data.. says that the server had a newer version) {
                         // prompt user if they want to accept changes from the database. changes made locally during the sync will be discarded
