@@ -23,7 +23,7 @@
     "install": "^0.13.0",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "popper.js": "^1.16.0",
     "sass-loader": "^8.0.0",
     "toasts": "^1.0.0",
